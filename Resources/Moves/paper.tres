@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Move" load_steps=2 format=3 uid="uid://ccokivbuoerex"]
+
+[ext_resource type="Script" path="res://Scripts/Moves/move.gd" id="1_56s18"]
+
+[resource]
+script = ExtResource("1_56s18")
+name = "Paper"
+beats = "Rock"
