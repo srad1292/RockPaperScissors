@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://2a2gcu8y6ijp"]
+[gd_scene load_steps=6 format=3 uid="uid://2a2gcu8y6ijp"]
 
-[ext_resource type="Script" path="res://Scripts/characters_menu.gd" id="1_8cjjt"]
-[ext_resource type="Script" path="res://Scripts/character_list.gd" id="2_58b1o"]
+[ext_resource type="Script" path="res://Scripts/CharacterMenu/characters_menu.gd" id="1_8cjjt"]
+[ext_resource type="Script" path="res://Scripts/character_loader.gd" id="2_58b1o"]
+[ext_resource type="Script" path="res://Scripts/CharacterMenu/menu_character_list.gd" id="3_vympj"]
+[ext_resource type="Script" path="res://Scripts/CharacterMenu/edit_character_btn.gd" id="4_dsuhr"]
+[ext_resource type="Script" path="res://Scripts/CharacterMenu/delete_character_btn.gd" id="5_p8siq"]
 
 [node name="CharactersMenu" type="Control"]
 layout_mode = 3
@@ -47,83 +50,106 @@ size_flags_stretch_ratio = 5.0
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.78
 
-[node name="BtnNew" type="Button" parent="VBoxContainer2/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "New
-"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer"]
+[node name="CharacterColumn" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 1.14
 script = ExtResource("2_58b1o")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer2/HBoxContainer/VBoxContainer2"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer2/HBoxContainer/CharacterColumn"]
+visible = false
 layout_mode = 2
 placeholder_text = "Name..."
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2/HBoxContainer/VBoxContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2/HBoxContainer/CharacterColumn"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/VBoxContainer2/ScrollContainer"]
+[node name="VBoxCharList" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer/CharacterColumn/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/CharacterColumn/ScrollContainer/VBoxCharList"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 text = "Person A"
 fit_content = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/CharacterColumn/ScrollContainer/VBoxCharList"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 text = "Person B"
 fit_content = true
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/CharacterColumn/ScrollContainer/VBoxCharList"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 text = "Person C"
 fit_content = true
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/CharacterColumn/ScrollContainer/VBoxCharList"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 text = "Person D"
 fit_content = true
 
-[node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+[node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/CharacterColumn/ScrollContainer/VBoxCharList"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 text = "Person E"
 fit_content = true
 
-[node name="RichTextLabel6" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/VBoxContainer2/ScrollContainer/VBoxContainer"]
+[node name="RichTextLabel6" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer/CharacterColumn/ScrollContainer/VBoxCharList"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 12
 text = "Person F"
 fit_content = true
 
+[node name="ItemList" type="ItemList" parent="VBoxContainer2/HBoxContainer/CharacterColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+item_count = 2
+item_0/text = "Test A"
+item_1/text = "Person B"
+script = ExtResource("3_vympj")
+
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.67
+theme_override_constants/separation = 11
+
+[node name="BtnNew" type="Button" parent="VBoxContainer2/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "New
+"
 
 [node name="BtnEdit" type="Button" parent="VBoxContainer2/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
+disabled = true
 text = "Edit
 "
+script = ExtResource("4_dsuhr")
 
 [node name="BtnDelete" type="Button" parent="VBoxContainer2/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
+disabled = true
 text = "Delete"
+script = ExtResource("5_p8siq")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
+size_flags_vertical = 6
 theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer2/MarginContainer"]
@@ -135,4 +161,10 @@ theme_override_font_sizes/font_size = 24
 text = "Back
 "
 
+[connection signal="characters_loaded" from="VBoxContainer2/HBoxContainer/CharacterColumn" to="VBoxContainer2/HBoxContainer/CharacterColumn/ItemList" method="_on_characters_loaded"]
+[connection signal="item_selected" from="VBoxContainer2/HBoxContainer/CharacterColumn/ItemList" to="VBoxContainer2/HBoxContainer/VBoxContainer3/BtnEdit" method="_on_item_list_item_selected"]
+[connection signal="item_selected" from="VBoxContainer2/HBoxContainer/CharacterColumn/ItemList" to="VBoxContainer2/HBoxContainer/VBoxContainer3/BtnDelete" method="_on_character_selected"]
+[connection signal="items_unselected" from="VBoxContainer2/HBoxContainer/CharacterColumn/ItemList" to="VBoxContainer2/HBoxContainer/VBoxContainer3/BtnEdit" method="_on_item_list_items_unselected"]
+[connection signal="items_unselected" from="VBoxContainer2/HBoxContainer/CharacterColumn/ItemList" to="VBoxContainer2/HBoxContainer/VBoxContainer3/BtnDelete" method="_on_item_list_items_unselected"]
+[connection signal="pressed" from="VBoxContainer2/HBoxContainer/VBoxContainer3/BtnDelete" to="VBoxContainer2/HBoxContainer/CharacterColumn/ItemList" method="_on_btn_delete_pressed"]
 [connection signal="pressed" from="VBoxContainer2/MarginContainer/VBoxContainer2/BtnBack" to="." method="_on_btn_back_pressed"]

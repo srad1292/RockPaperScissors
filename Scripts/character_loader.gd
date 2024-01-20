@@ -1,5 +1,7 @@
 extends Node
 
+signal characters_loaded(characters)
+
 var characters = []
 
 func _ready():
@@ -11,6 +13,7 @@ func _ready():
 		print("Characters: ")
 		for c in characters:
 			print(c.name)
+		characters_loaded.emit(characters)
 	else:
 		print("error loading character directory")
 		
