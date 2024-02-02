@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://bcxfmyvw2buqc"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/character.gd" id="1_qlqck"]
+
+[resource]
+script = ExtResource("1_qlqck")
+name = "Might Guy"
+age = 30
+gender = "M"
+moves = ["res://Resources/Moves/rock.tres", "res://Resources/Moves/scissors.tres"]

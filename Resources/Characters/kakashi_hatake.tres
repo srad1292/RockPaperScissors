@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_upbnl")
 name = "Kakashi Hatake"
-age = 32
+age = 31
 gender = "M"
 moves = ["res://Resources/Moves/rock.tres", "res://Resources/Moves/paper.tres", "res://Resources/Moves/scissors.tres"]

@@ -1,0 +1,207 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdd46kkq6jycf"]
+
+[ext_resource type="Script" path="res://Scripts/character_loader.gd" id="1_7rpkb"]
+[ext_resource type="Script" path="res://Scripts/match_manager.gd" id="1_60205"]
+[ext_resource type="Script" path="res://Scripts/fighter_displays.gd" id="2_loyv6"]
+[ext_resource type="Script" path="res://Scripts/fighter_display.gd" id="3_8dplk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqr0x"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.870588, 0.870588, 0.870588, 1)
+
+[node name="Match" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[node name="CharacterLoader" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7rpkb")
+
+[node name="MatchManager" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_60205")
+
+[node name="MatchUI" type="VBoxContainer" parent="MatchManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="HBoxContainer" parent="MatchManager/MatchUI"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LblTitle" type="Label" parent="MatchManager/MatchUI/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Rock Paper Scissors!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FighterDisplays" type="HBoxContainer" parent="MatchManager/MatchUI"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+script = ExtResource("2_loyv6")
+
+[node name="Spacer" type="VBoxContainer" parent="MatchManager/MatchUI/FighterDisplays"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FighterDisplay" type="HBoxContainer" parent="MatchManager/MatchUI/FighterDisplays"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 12
+alignment = 2
+script = ExtResource("3_8dplk")
+
+[node name="WinsBarContainer" type="VBoxContainer" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay"]
+layout_mode = 2
+
+[node name="WinBar" type="ProgressBar" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay/WinsBarContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 3.0
+step = 1.0
+value = 2.0
+fill_mode = 3
+show_percentage = false
+
+[node name="DetailsContainer" type="VBoxContainer" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay/DetailsContainer"]
+layout_mode = 2
+text = "First Last
+"
+
+[node name="Age" type="Label" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay/DetailsContainer"]
+layout_mode = 2
+text = "30"
+
+[node name="Gender" type="Label" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay/DetailsContainer"]
+layout_mode = 2
+text = "M
+"
+
+[node name="Spacer2" type="VBoxContainer" parent="MatchManager/MatchUI/FighterDisplays"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FighterDisplay2" type="HBoxContainer" parent="MatchManager/MatchUI/FighterDisplays"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 12
+script = ExtResource("3_8dplk")
+
+[node name="DetailsContainer" type="VBoxContainer" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay2"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay2/DetailsContainer"]
+layout_mode = 2
+text = "First Last
+"
+
+[node name="Age" type="Label" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay2/DetailsContainer"]
+layout_mode = 2
+text = "30"
+
+[node name="Gender" type="Label" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay2/DetailsContainer"]
+layout_mode = 2
+text = "M
+"
+
+[node name="WinsBarContainer" type="VBoxContainer" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay2"]
+layout_mode = 2
+
+[node name="WinBar" type="ProgressBar" parent="MatchManager/MatchUI/FighterDisplays/FighterDisplay2/WinsBarContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 3.0
+step = 1.0
+value = 2.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Spacer3" type="VBoxContainer" parent="MatchManager/MatchUI/FighterDisplays"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="VBoxContainer" parent="MatchManager/MatchUI"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayByPlay" type="Control" parent="MatchManager/MatchUI"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MatchManager/MatchUI/PlayByPlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 15
+
+[node name="Panel" type="Panel" parent="MatchManager/MatchUI/PlayByPlay/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqr0x")
+
+[node name="MarginContainer" type="MarginContainer" parent="MatchManager/MatchUI/PlayByPlay/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="MatchManager/MatchUI/PlayByPlay/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "The match is currently tied two to two.
+Let's see who will win this final contest.
+Press space to continue..."
+
+[connection signal="characters_loaded" from="CharacterLoader" to="MatchManager" method="_on_characters_loaded"]
+[connection signal="set_active_fighters" from="MatchManager" to="MatchManager/MatchUI/FighterDisplays" method="_on_match_manager_set_active_fighters"]
